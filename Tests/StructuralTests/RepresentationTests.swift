@@ -26,35 +26,7 @@ final class StructuralRepresentationTests: XCTestCase {
         XCTAssertEqual(point, pointFromRepr)
     }
 
-    func testBinaryTree() {
-        let tree: BinaryTree<Int> = .branch(.leaf(1), 2, .branch(.leaf(3), 4, .leaf(5)))
-        let repr = tree.structuralRepresentation
-        let treeFromRepr = BinaryTree(structuralRepresentation: repr)
-        XCTAssertEqual(tree, treeFromRepr)
-    }
-
-    func testColor() {
-        let colors: [Color] = [.red, .green, .blue]
-        for color in colors {
-            let repr = color.structuralRepresentation
-            let colorFromRepr = Color(structuralRepresentation: repr)
-            XCTAssertEqual(color, colorFromRepr)
-        }
-    }
-
-    func testASCII() {
-        let codes: [ASCII] = [.tab, .lineFeed, .carriageReturn]
-        for code in codes {
-            let repr = code.structuralRepresentation
-            let codeFromRepr = ASCII(structuralRepresentation: repr)
-            XCTAssertEqual(code, codeFromRepr)
-        }
-    }
-
     static var allTests = [
         ("testPoint3", testPoint3),
-        ("testBinaryTree", testBinaryTree),
-        ("testColor", testColor),
-        ("testASCII", testASCII),
     ]
 }

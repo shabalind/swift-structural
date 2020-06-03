@@ -30,22 +30,6 @@ where Value: InplaceAdd, Next: InplaceAdd {
     }
 }
 
-extension StructuralStruct: InplaceAdd
-where Properties: InplaceAdd {
-    public mutating func inplaceAdd(_ other: Self) {
-        self.properties.inplaceAdd(other.properties)
-    }
-}
-
-extension StructuralProperty: InplaceAdd
-where Value: InplaceAdd {
-    public mutating func inplaceAdd(_ other: Self) {
-        if isMutable {
-            self.value.inplaceAdd(other.value)
-        }
-    }
-}
-
 // Base cases. 
 
 extension StructuralEmpty: InplaceAdd {

@@ -25,50 +25,46 @@ public struct StudentGrades {
 }
 
 extension StudentGrades: Structural {
-    public typealias StructuralRepresentation = StructuralStruct<
+    public typealias StructuralRepresentation = 
         StructuralCons<
-            StructuralProperty<Int>,
+            Int,
             StructuralCons<
-                StructuralProperty<[Double]>,
+                [Double],
                 StructuralEmpty
             >
         >
-    >
 
     public var structuralRepresentation: StructuralRepresentation {
         get {
-            return StructuralStruct(
-                StudentGrades.self,
+            return 
                 StructuralCons(
-                    StructuralProperty("classId", classId, isMutable: false),
+                    classId,
                     StructuralCons(
-                        StructuralProperty("grades", grades, isMutable: true),
-                        StructuralEmpty())))
+                        grades,
+                        StructuralEmpty()))
         }
 
         _modify {
-            var av = StructuralStruct(
-                StudentGrades.self,
+            var av = 
                 StructuralCons(
-                    StructuralProperty("classId", classId, isMutable: false),
+                    classId, 
                     StructuralCons(
-                        StructuralProperty("grades", grades, isMutable: true),
-                        StructuralEmpty())))
+                        grades,
+                        StructuralEmpty()))
 
             // Use swap to avoid copies.
             grades = []
-            defer { swap(&av.properties.next.value.value, &grades) }
+            defer { swap(&av.next.value, &grades) }
 
             yield &av
         }
     }
 
     public init(structuralRepresentation: StructuralRepresentation) {
-        self.classId = structuralRepresentation.properties.value.value
-        self.grades = structuralRepresentation.properties.next.value.value
+        self.classId = structuralRepresentation.value
+        self.grades = structuralRepresentation.next.value
     }
 }
 
 extension StudentGrades: CustomEquatable {}
 extension StudentGrades: CustomHashable {}
-extension StudentGrades: CustomDebugString {}

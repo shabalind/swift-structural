@@ -59,44 +59,6 @@ where Value: CustomComparable, Next: CustomComparable {
     }
 }
 
-extension StructuralStruct: CustomComparable
-where Properties: CustomComparable {
-    public func less(_ other: Self) -> Bool {
-        return properties.less(other.properties)
-    }
-
-    public func lessOrEqual(_ other: Self) -> Bool {
-        return properties.lessOrEqual(other.properties)
-    }
-
-    public func greater(_ other: Self) -> Bool {
-        return properties.greater(other.properties)
-    }
-
-    public func greaterOrEqual(_ other: Self) -> Bool {
-        return properties.greaterOrEqual(other.properties)
-    }
-}
-
-extension StructuralProperty: CustomComparable
-where Value: CustomComparable {
-    public func less(_ other: Self) -> Bool {
-        return value.less(other.value)
-    }
-
-    public func lessOrEqual(_ other: Self) -> Bool {
-        return value.lessOrEqual(other.value)
-    }
-
-    public func greater(_ other: Self) -> Bool {
-        return value.greater(other.value)
-    }
-
-    public func greaterOrEqual(_ other: Self) -> Bool {
-        return value.greaterOrEqual(other.value)
-    }
-}
-
 // Base cases. 
 
 extension StructuralEmpty: CustomComparable {

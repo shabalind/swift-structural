@@ -43,47 +43,6 @@ where Value: CustomHashable, Next: CustomHashable {
     }
 }
 
-extension StructuralEither: CustomHashable
-where Left: CustomHashable, Right: CustomHashable {
-    public func customHash(into hasher: inout Hasher) {
-        switch self {
-        case .left(let left):
-            left.customHash(into: &hasher)
-        case .right(let right):
-            right.customHash(into: &hasher)
-        }
-    }
-}
-
-extension StructuralCase: CustomHashable
-where RawValue: CustomHashable, AssociatedValues: CustomHashable {
-    public func customHash(into hasher: inout Hasher) {
-        rawValue.customHash(into: &hasher)
-        associatedValues.customHash(into: &hasher)
-    }
-}
-
-extension StructuralProperty: CustomHashable
-where Value: CustomHashable {
-    public func customHash(into hasher: inout Hasher) {
-        value.customHash(into: &hasher)
-    }
-}
-
-extension StructuralEnum: CustomHashable
-where Cases: CustomHashable {
-    public func customHash(into hasher: inout Hasher) {
-        cases.customHash(into: &hasher)
-    }
-}
-
-extension StructuralStruct: CustomHashable
-where Properties: CustomHashable {
-    public func customHash(into hasher: inout Hasher) {
-        properties.customHash(into: &hasher)
-    }
-}
-
 // Base cases.
 
 extension StructuralEmpty: CustomHashable {

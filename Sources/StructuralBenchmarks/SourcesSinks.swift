@@ -2,15 +2,6 @@
 import StructuralCore
 import StructuralExamples
 
-var tree1: BinaryTree<Double> = .branch(.leaf(1), 2, .branch(.leaf(3), 4, .leaf(5)))
-var tree2: BinaryTree<Double> = .branch(.leaf(10), 20, .branch(.leaf(30), 40, .leaf(50)))
-
-var color1 = Color.red
-var color2 = Color.blue
-
-var ascii1 = ASCII.tab
-var ascii2 = ASCII.lineFeed
-
 // ###sourceLocation(file: "/usr/local/google/home/shabalin/swift-libs/swift-structural/Sources/StructuralBenchmarks/SourcesSinks.swift.gyb", line: 14)
 var p1_2 = Point1(
     // ###sourceLocation(file: "/usr/local/google/home/shabalin/swift-libs/swift-structural/Sources/StructuralBenchmarks/SourcesSinks.swift.gyb", line: 16)
@@ -1183,7 +1174,6 @@ var point15Sink = p15_1
 // ###sourceLocation(file: "/usr/local/google/home/shabalin/swift-libs/swift-structural/Sources/StructuralBenchmarks/SourcesSinks.swift.gyb", line: 34)
 var point16Sink = p16_1
 // ###sourceLocation(file: "/usr/local/google/home/shabalin/swift-libs/swift-structural/Sources/StructuralBenchmarks/SourcesSinks.swift.gyb", line: 36)
-var treeSink = tree1
 var stringSink = ""
 var intSink: Int = 0
 var anySink: Any? = nil

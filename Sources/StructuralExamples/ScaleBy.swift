@@ -63,22 +63,6 @@ where Value: ScaleInPlace, Next: ScaleInPlace {
     }
 }
 
-extension StructuralStruct: ScaleInPlace
-where Properties: ScaleInPlace {
-    public mutating func scale(by scalar: Double) {
-        self.properties.scale(by: scalar)
-    }
-}
-
-extension StructuralProperty: ScaleInPlace
-where Value: ScaleInPlace {
-    public mutating func scale(by scalar: Double) {
-        if isMutable {
-            self.value.scale(by: scalar)
-        }
-    }
-}
-
 // Base cases.
 
 extension StructuralEmpty: ScaleInPlace {
@@ -129,9 +113,4 @@ where Element: CustomHashable {
     public func customHash(into hasher: inout Hasher) {
         forEach { $0.customHash(into: &hasher) }
     }
-}
-
-extension Array: CustomDebugString {
-    // TODO: this implementation is wrong!
-    public var debugString: String { String(describing: self) }
 }

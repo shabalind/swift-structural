@@ -30,15 +30,8 @@ final class AdditiveTests: XCTestCase {
         XCTAssertEqual(point1 + point1, point2)
     }
 
-    func testBinaryTree() {
-        let tree1: BinaryTree<Int> = .branch(.leaf(1), 2, .branch(.leaf(3), 4, .leaf(5)))
-        let tree2: BinaryTree<Int> = .branch(.leaf(2), 4, .branch(.leaf(6), 8, .leaf(10)))
-        XCTAssertEqual(tree1 + tree1, tree2)
-    }
-
     static var allTests = [
         ("testPoint3Zero", testPoint3Zero),
         ("testPoint3", testPoint3),
-        ("testBinaryTree", testBinaryTree),
     ]
 }

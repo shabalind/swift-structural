@@ -34,19 +34,6 @@ where Value: Zero, Next: Zero {
     }
 }
 
-extension StructuralStruct: Zero where Properties: Zero {
-    public static var zero: Self {
-        return StructuralStruct(Properties.zero)
-    }
-}
-
-extension StructuralProperty: Zero
-where Value: Zero {
-    public static var zero: Self {
-        return StructuralProperty(Value.zero)
-    }
-}
-
 // Base cases.
 
 extension StructuralEmpty: Zero {

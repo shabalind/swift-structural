@@ -29,20 +29,6 @@ where Value: DefaultInitializable, Next: DefaultInitializable {
     }
 }
 
-extension StructuralStruct: DefaultInitializable
-where Properties: DefaultInitializable {
-    public init() {
-        self.init(Properties())
-    }
-}
-
-extension StructuralProperty: DefaultInitializable
-where Value: DefaultInitializable {
-    public init() {
-        self.init(Value())
-    }
-}
-
 // Base cases. 
 
 extension StructuralEmpty: DefaultInitializable {}

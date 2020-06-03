@@ -17,17 +17,6 @@ import Benchmark
 import StructuralCore
 import StructuralExamples
 
-func specializedAdd(_ lhs: BinaryTree<Double>, _ rhs: BinaryTree<Double>) -> BinaryTree<Double> {
-    switch (lhs, rhs) {
-    case let (.leaf(x), .leaf(y)):
-        return .leaf(x + y)
-    case let (.branch(l1, v1, r1), .branch(l2, v2, r2)):
-        return .branch(l1 + l2, v1 + v2, r1 + r2)
-    default:
-        fatalError("Mismatch: \(lhs), \(rhs)")
-    }
-}
-
 // ###sourceLocation(file: "/usr/local/google/home/shabalin/swift-libs/swift-structural/Sources/StructuralBenchmarks/AdditiveBenchmarks.swift.gyb", line: 32)
 
 func specializedAdd(_ lhs: Point1, _ rhs: Point1) -> Point1 {
@@ -833,12 +822,4 @@ let additiveBenchmarks = BenchmarkSuite(name: "Additive") { suite in
     }
 
     // ###sourceLocation(file: "/usr/local/google/home/shabalin/swift-libs/swift-structural/Sources/StructuralBenchmarks/AdditiveBenchmarks.swift.gyb", line: 59)
-
-    suite.benchmark("BinaryTree (specialized)") {
-        treeSink = specializedAdd(tree2, tree2)
-    }
-
-    suite.benchmark("BinaryTree (generic)") {
-        treeSink = tree1 + tree1
-    }
 }

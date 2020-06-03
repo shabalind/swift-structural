@@ -26,35 +26,7 @@ final class CustomEquatableTests: XCTestCase {
         XCTAssertFalse(pointA.customEqual(pointB))
     }
 
-    func testBinaryTree() {
-        let treeA: BinaryTree<Int> = .branch(.leaf(1), 2, .branch(.leaf(3), 4, .leaf(5)))
-        let treeB: BinaryTree<Int> = .branch(.leaf(42), 0, .leaf(21))
-        XCTAssertTrue(treeA.customEqual(treeA))
-        XCTAssertFalse(treeA.customEqual(treeB))
-    }
-
-    func testColor() {
-        XCTAssertTrue(Color.red.customEqual(Color.red))
-        XCTAssertTrue(Color.green.customEqual(Color.green))
-        XCTAssertTrue(Color.blue.customEqual(Color.blue))
-        XCTAssertFalse(Color.red.customEqual(Color.green))
-        XCTAssertFalse(Color.green.customEqual(Color.blue))
-        XCTAssertFalse(Color.blue.customEqual(Color.red))
-    }
-
-    func testASCII() {
-        XCTAssertTrue(ASCII.tab.customEqual(ASCII.tab))
-        XCTAssertTrue(ASCII.lineFeed.customEqual(ASCII.lineFeed))
-        XCTAssertTrue(ASCII.carriageReturn.customEqual(ASCII.carriageReturn))
-        XCTAssertFalse(ASCII.tab.customEqual(ASCII.lineFeed))
-        XCTAssertFalse(ASCII.lineFeed.customEqual(ASCII.carriageReturn))
-        XCTAssertFalse(ASCII.carriageReturn.customEqual(ASCII.tab))
-    }
-
     static var allTests = [
         ("testPoint3", testPoint3),
-        ("testBinaryTree", testBinaryTree),
-        ("testColor", testColor),
-        ("testASCII", testASCII),
     ]
 }

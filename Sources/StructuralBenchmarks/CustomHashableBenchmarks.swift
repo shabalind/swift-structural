@@ -181,28 +181,4 @@ let customHashableBenchmarks = BenchmarkSuite(name: "CustomHashable") { suite in
     }
 
     // ###sourceLocation(file: "/usr/local/google/home/shabalin/swift-libs/swift-structural/Sources/StructuralBenchmarks/CustomHashableBenchmarks.swift.gyb", line: 33)
-
-    suite.benchmark("BinaryTree (generic)") {
-        intSink = customHash(tree1)
-    }
-
-    suite.benchmark("BinaryTree (reference)") {
-        intSink = referenceHash(tree1)
-    }
-
-    suite.benchmark("Color (generic)") {
-        intSink = customHash(color1)
-    }
-
-    suite.benchmark("Color (reference)") {
-        intSink = referenceHash(color1)
-    }
-
-    suite.benchmark("ASCII (generic)") {
-        intSink = customHash(ascii1)
-    }
-
-    suite.benchmark("ASCII (reference)") {
-        intSink = referenceHash(ascii1)
-    }
 }

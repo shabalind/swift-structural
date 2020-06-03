@@ -25,48 +25,44 @@ public struct Semester {
 }
 
 extension Semester: Structural {
-    public typealias StructuralRepresentation = StructuralStruct<
+    public typealias StructuralRepresentation = 
         StructuralCons<
-            StructuralProperty<Int>,
+            Int,
             StructuralCons<
-                StructuralProperty<[StudentGrades]>,
+                [StudentGrades],
                 StructuralEmpty
             >
         >
-    >
 
     public var structuralRepresentation: StructuralRepresentation {
         get {
-            return StructuralStruct(
-                Semester.self,
+            return 
                 StructuralCons(
-                    StructuralProperty("year", year, isMutable: false),
+                    year, 
                     StructuralCons(
-                        StructuralProperty("classes", classes, isMutable: true),
-                        StructuralEmpty())))
+                        classes, 
+                        StructuralEmpty()))
         }
 
         _modify {
-            var av = StructuralStruct(
-                Semester.self,
+            var av = 
                 StructuralCons(
-                    StructuralProperty("year", year, isMutable: false),
+                    year, 
                     StructuralCons(
-                        StructuralProperty("classes", classes, isMutable: true),
-                        StructuralEmpty())))
+                        classes, 
+                        StructuralEmpty()))
             classes = []
             // Use swap to avoid copies.
-            defer { swap(&av.properties.next.value.value, &classes) }
+            defer { swap(&av.next.value, &classes) }
             yield &av
         }
     }
 
     public init(structuralRepresentation: StructuralRepresentation) {
-        self.year = structuralRepresentation.properties.value.value
-        self.classes = structuralRepresentation.properties.next.value.value
+        self.year = structuralRepresentation.value
+        self.classes = structuralRepresentation.next.value
     }
 }
 
 extension Semester: CustomEquatable {}
 extension Semester: CustomHashable {}
-extension Semester: CustomDebugString {}

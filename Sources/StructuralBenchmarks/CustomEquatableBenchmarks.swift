@@ -181,28 +181,4 @@ let customEquatableBenchmarks = BenchmarkSuite(name: "CustomEquatable") { suite 
     }
 
     // ###sourceLocation(file: "/usr/local/google/home/shabalin/swift-libs/swift-structural/Sources/StructuralBenchmarks/CustomEquatableBenchmarks.swift.gyb", line: 33)
-
-    suite.benchmark("BinaryTree (generic)") {
-        boolSink = tree1.customEqual(tree2)
-    }
-
-    suite.benchmark("BinaryTree (reference)") {
-        boolSink = tree1 == tree2
-    }
-
-    suite.benchmark("Color (generic)") {
-        boolSink = color1.customEqual(color2)
-    }
-
-    suite.benchmark("Color (reference)") {
-        boolSink = color1 == color2
-    }
-
-    suite.benchmark("ASCII (generic)") {
-        boolSink = ascii1.customEqual(ascii2)
-    }
-
-    suite.benchmark("ASCII (reference)") {
-        boolSink = ascii1 == ascii2
-    }
 }

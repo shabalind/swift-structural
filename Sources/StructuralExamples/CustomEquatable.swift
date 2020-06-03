@@ -30,48 +30,6 @@ where Value: CustomEquatable, Next: CustomEquatable {
     }
 }
 
-extension StructuralEither: CustomEquatable
-where Left: CustomEquatable, Right: CustomEquatable {
-    public func customEqual(_ other: Self) -> Bool {
-        switch (self, other) {
-        case (.left(let lhs), .left(let rhs)):
-            return lhs.customEqual(rhs)
-        case (.right(let lhs), .right(let rhs)):
-            return lhs.customEqual(rhs)
-        default:
-            return false
-        }
-    }
-}
-
-extension StructuralCase: CustomEquatable
-where AssociatedValues: CustomEquatable {
-    public func customEqual(_ other: Self) -> Bool {
-        associatedValues.customEqual(other.associatedValues)
-    }
-}
-
-extension StructuralProperty: CustomEquatable
-where Value: CustomEquatable {
-    public func customEqual(_ other: Self) -> Bool {
-        return value.customEqual(other.value)
-    }
-}
-
-extension StructuralEnum: CustomEquatable
-where Cases: CustomEquatable {
-    public func customEqual(_ other: Self) -> Bool {
-        cases.customEqual(other.cases)
-    }
-}
-
-extension StructuralStruct: CustomEquatable
-where Properties: CustomEquatable {
-    public func customEqual(_ other: Self) -> Bool {
-        properties.customEqual(other.properties)
-    }
-}
-
 // Base cases.
 
 extension StructuralEmpty: CustomEquatable {
